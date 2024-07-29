@@ -27,7 +27,8 @@ main {
 
 #search-section {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
     margin-bottom: 1rem;
 }
 
@@ -36,7 +37,7 @@ main {
     padding: 0.5rem;
     font-size: 1rem;
     border: 2px solid #FF69B4;
-    border-radius: 20px 0 0 20px;
+    border-radius: 20px;
     outline: none;
 }
 
@@ -46,13 +47,37 @@ main {
     background-color: #FF69B4;
     color: white;
     border: none;
-    border-radius: 0 20px 20px 0;
+    border-radius: 20px;
     cursor: pointer;
     transition: background-color 0.3s ease;
+    margin-top: 0.5rem;
 }
 
 #search-button:hover {
     background-color: #FF1493;
+}
+
+#suggestions-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    width: 70%;
+    max-height: 150px;
+    overflow-y: auto;
+    background-color: white;
+    border: 2px solid #FF69B4;
+    border-radius: 0 0 20px 20px;
+}
+
+#suggestions-list li {
+    padding: 0.5rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+#suggestions-list li:hover {
+    background-color: #FF69B4;
+    color: white;
 }
 
 #filter-section {
@@ -60,25 +85,13 @@ main {
     margin-bottom: 1rem;
 }
 
-#rating-filter {
+#rating-filter, #sort-select {
     padding: 0.5rem;
     font-size: 1rem;
     border: 2px solid #FF69B4;
     border-radius: 20px;
     outline: none;
-}
-
-#sort-section {
-    text-align: center;
-    margin-bottom: 1rem;
-}
-
-#sort-select {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 2px solid #FF69B4;
-    border-radius: 20px;
-    outline: none;
+    margin-left: 10px;
 }
 
 #favorites-section, #results-section {
