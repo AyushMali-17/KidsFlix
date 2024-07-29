@@ -1,4 +1,3 @@
-// Enhanced mock data for kids movies
 const kidsMovies = [
     { id: 1, title: "Toy Story", year: 1995, rating: "G", poster: "https://example.com/toy-story.jpg", description: "A story of Woody, Buzz Lightyear, and their friends as they embark on various adventures." },
     { id: 2, title: "Finding Nemo", year: 2003, rating: "G", poster: "https://example.com/finding-nemo.jpg", description: "The story of a clownfish named Marlin who searches for his abducted son Nemo." },
@@ -10,7 +9,6 @@ const kidsMovies = [
     { id: 8, title: "Up", year: 2009, rating: "PG", poster: "https://example.com/up.jpg", description: "78-year-old Carl Fredricksen travels to Paradise Falls in his house equipped with balloons, inadvertently taking a young stowaway." },
 ];
 
-// DOM elements
 const searchInput = document.getElementById('search-input');
 const searchButton = document.getElementById('search-button');
 const movieList = document.getElementById('movie-list');
@@ -19,34 +17,40 @@ const favoritesList = document.getElementById('favorites-list');
 const modal = document.getElementById('movie-modal');
 const modalContent = document.getElementById('modal-movie-details');
 const closeModal = document.getElementsByClassName('close')[0];
+const sortSelect = document.getElementById('sort-select');
 
 let favorites = [];
 
-// Event listeners
 searchButton.addEventListener('click', searchMovies);
 searchInput.addEventListener('keyup', (e) => {
     if (e.key === 'Enter') searchMovies();
 });
 ratingFilter.addEventListener('change', searchMovies);
+sortSelect.addEventListener('change', searchMovies);
 closeModal.addEventListener('click', () => modal.style.display = 'none');
 window.addEventListener('click', (e) => {
     if (e.target === modal) modal.style.display = 'none';
 });
 
-// Function to search movies
 function searchMovies() {
     const searchTerm = searchInput.value.toLowerCase();
     const selectedRating = ratingFilter.value;
+    const sortCriteria = sortSelect.value;
     
-    const filteredMovies = kidsMovies.filter(movie => 
+    let filteredMovies = kidsMovies.filter(movie => 
         movie.title.toLowerCase().includes(searchTerm) &&
         (selectedRating === 'all' || movie.rating === selectedRating)
     );
     
+    if (sortCriteria === 'title') {
+        filteredMovies.sort((a, b) => a.title.localeCompare(b.title));
+    } else if (sortCriteria === 'year') {
+        filteredMovies.sort((a, b) => a.year - b.year);
+    }
+    
     displayMovies(filteredMovies, movieList);
 }
 
-// Function to display movies
 function displayMovies(movies, container) {
     container.innerHTML = '';
     if (movies.length === 0) {
@@ -60,7 +64,6 @@ function displayMovies(movies, container) {
     });
 }
 
-// Function to create a movie element
 function createMovieElement(movie) {
     const movieElement = document.createElement('div');
     movieElement.classList.add('movie-item');
@@ -82,7 +85,6 @@ function createMovieElement(movie) {
     return movieElement;
 }
 
-// Function to show movie details in modal
 function showMovieDetails(movie) {
     modalContent.innerHTML = `
         <h2>${movie.title}</h2>
@@ -94,7 +96,6 @@ function showMovieDetails(movie) {
     modal.style.display = 'block';
 }
 
-// Function to toggle favorite status
 function toggleFavorite(movie) {
     const index = favorites.indexOf(movie.id);
     if (index === -1) {
@@ -105,12 +106,11 @@ function toggleFavorite(movie) {
     updateFavorites();
 }
 
-// Function to update favorites list
 function updateFavorites() {
     const favoriteMovies = kidsMovies.filter(movie => favorites.includes(movie.id));
     displayMovies(favoriteMovies, favoritesList);
-    searchMovies(); // Refresh main movie list to update favorite buttons
+    searchMovies();
 }
 
-// Initial display of all movies
 displayMovies(kidsMovies, movieList);
+

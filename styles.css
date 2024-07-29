@@ -68,6 +68,19 @@ main {
     outline: none;
 }
 
+#sort-section {
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+#sort-select {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 2px solid #FF69B4;
+    border-radius: 20px;
+    outline: none;
+}
+
 #favorites-section, #results-section {
     margin-top: 2rem;
 }
