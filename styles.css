@@ -68,12 +68,16 @@ main {
     outline: none;
 }
 
-#results-section h2 {
+#favorites-section, #results-section {
+    margin-top: 2rem;
+}
+
+#favorites-section h2, #results-section h2 {
     color: #FF69B4;
     text-align: center;
 }
 
-#movie-list {
+#favorites-list, #movie-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 1rem;
@@ -85,6 +89,8 @@ main {
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
 }
 
 .movie-item:hover {
@@ -104,12 +110,68 @@ main {
     margin-bottom: 0.5rem;
 }
 
+.favorite-button {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background-color: transparent;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    outline: none;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
 footer {
     background-color: #FF69B4;
     color: white;
     text-align: center;
     padding: 1rem;
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+    margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+    #search-input {
+        width: 60%;
+    }
+
+    .movie-item {
+        width: 100%;
+    }
 }
