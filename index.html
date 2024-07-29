@@ -10,6 +10,11 @@
 <body>
     <header>
         <h1>KidsFlix Movie Search</h1>
+        <nav id="auth-nav">
+            <button id="login-button">Login</button>
+            <button id="register-button">Register</button>
+            <button id="logout-button" style="display:none;">Logout</button>
+        </nav>
     </header>
     <main>
         <section id="search-section">
@@ -43,6 +48,24 @@
         <div class="modal-content">
             <span class="close">&times;</span>
             <div id="modal-movie-details"></div>
+            <div id="movie-reviews">
+                <h3>Reviews</h3>
+                <div id="review-list"></div>
+                <textarea id="review-input" placeholder="Write a review..."></textarea>
+                <button id="submit-review">Submit Review</button>
+            </div>
+        </div>
+    </div>
+    <div id="auth-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <div id="auth-form">
+                <h2 id="auth-title">Login</h2>
+                <input type="text" id="username" placeholder="Username">
+                <input type="password" id="password" placeholder="Password">
+                <button id="auth-submit">Login</button>
+                <button id="auth-switch">Register</button>
+            </div>
         </div>
     </div>
     <footer>

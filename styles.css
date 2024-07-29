@@ -11,6 +11,27 @@ header {
     text-align: center;
     padding: 1rem;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    position: relative;
+}
+
+nav#auth-nav {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+}
+
+nav#auth-nav button {
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+
+nav#auth-nav button:hover {
+    background-color: #FF1493;
 }
 
 h1 {
@@ -192,9 +213,66 @@ footer {
     margin-top: 2rem;
 }
 
+#review-input {
+    width: 100%;
+    padding: 0.5rem
+        margin-top: 1rem;
+    border: 2px solid #FF69B4;
+    border-radius: 10px;
+    outline: none;
+    resize: vertical;
+}
+
+#submit-review {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+#submit-review:hover {
+    background-color: #FF1493;
+}
+
+#auth-form {
+    display: flex;
+    flex-direction: column;
+}
+
+#auth-form input {
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 2px solid #FF69B4;
+    border-radius: 20px;
+}
+
+#auth-form button {
+    padding: 0.5rem;
+    font-size: 1rem;
+    background-color: #FF69B4;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    margin-top: 0.5rem;
+}
+
+#auth-form button:hover {
+    background-color: #FF1493;
+}
+
+#auth-form #auth-switch {
+    background-color: transparent;
+    color: #FF69B4;
+}
+
 @media (max-width: 600px) {
     #search-input {
-        width: 60%;
+        width: 80%;
     }
 
     .movie-item {
